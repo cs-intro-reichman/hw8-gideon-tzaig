@@ -88,7 +88,6 @@ public class Network {
                 thisUser = users[i];
                 break;
             }
-            else return null;
         }
         
         for (int i = 0; i < userCount; i ++) {            
@@ -117,12 +116,13 @@ public class Network {
         int maxF = 0;
 
         for (int i = 0; i < userCount; i ++) {
-            if (followeeCount(users[i].getName()) > maxF) {
+            if (users[i] != null && (followeeCount(users[i].getName()) > maxF)) {
                 mostPop = users[i];
                 maxF = followeeCount(users[i].getName());
             }
         }
 
+        if (mostPop == null) return null;
         return mostPop.getName();
     }
 
@@ -141,9 +141,9 @@ public class Network {
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
        //// Replace the following statement with your code
-       String ans = "Network:\n";
+       String ans = "Network:";
        for (int i = 0; i < userCount; i++) {
-           ans = ans + users[i] + "\n";
+           ans = ans + "\n" + users[i];
         }
        return ans;       
     }

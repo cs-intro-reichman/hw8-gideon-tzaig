@@ -53,9 +53,11 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
         //// Replace the following statement with your code
+        if (this.getName() == name) return false;
+        String[] myFollows = this.getfFollows();
         
         for (int i = 0; i < fCount; i ++) {
-            if (this.follows[i].equals(name)) return false;
+            if (myFollows[i].toLowerCase().equals(name.toLowerCase())) return false;
         }
 
         if (fCount != maxfCount) {
@@ -70,17 +72,21 @@
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         //// Replace the following statement with your code
+        String[] myFollows = this.getfFollows();
+        int localFnum = this.getfCount();
 
-        for (int i = 0; i < fCount; i ++) {
-            if (this.follows[i].equals(name)) {
-                for (int j = i; j < fCount; j ++) {
-                    if (j+1 == fCount) {
+        for (int i = 0; i < localFnum; i ++) {
+            if (myFollows[i].equals(name)) {
+                for (int j = i; j < localFnum; j ++) {
+                    if (j+1 == myFollows.length) {
                         this.follows[j] = null;
                         fCount = j;
                         break;
                     }
                     this.follows[j] = this.follows[j + 1];
                 }
+
+            fCount --;
             }                  
         }    
         
@@ -91,10 +97,13 @@
     /*  Notice: This is the size of the intersection of the two follows lists. */
     public int countMutual(User other) {
         //// Replace the following statement with your code
+        String[] myFollows = this.getfFollows();
+        String[] hisFollows = other.getfFollows();
         int common = 0;
-        for (int i = 0; i < fCount; i ++) {
-           for (int j = 0; j < other.fCount; j ++) {
-               if (this.follows[i] == other.follows[j]) common ++; 
+
+        for (int i = 0; i < myFollows.length; i ++) {
+           for (int j = 0; j < hisFollows.length; j ++) {
+               if (myFollows[i] == hisFollows[j] && myFollows[i] != null) common ++; 
             }
         }
         return common;
