@@ -45,7 +45,7 @@
     public boolean follows(String name) {
         //// Replace the following statement with your code
         for (int i = 0; i < fCount; i ++) {
-            if (this.follows[i].equals(name)) return true;
+            if (this.follows[i].toLowerCase().equals(name.toLowerCase())) return true;
         }
         return false;
     }
@@ -78,15 +78,13 @@
         for (int i = 0; i < localFnum; i ++) {
             if (myFollows[i].equals(name)) {
                 for (int j = i; j < localFnum; j ++) {
-                    if (j+1 == myFollows.length) {
+                    if (j+1 == localFnum) {
                         this.follows[j] = null;
                         fCount = j;
                         break;
                     }
                     this.follows[j] = this.follows[j + 1];
                 }
-
-            fCount --;
             }                  
         }    
         
