@@ -30,9 +30,15 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         //// Replace the following statement with your code
+        String lowName = name.toLowerCase();
+
         for (int i = 0; i < userCount; i ++) {
-            if (users[i].getName().toLowerCase() == name.toLowerCase()) return users[i];
+            String lowUserName = users[i].getName().toLowerCase();
+            if (lowUserName.equals(lowName)) {
+                return users[i];
+            }
         }
+
         return null;
     }
 

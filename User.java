@@ -99,9 +99,9 @@
         String[] otherFollows = other.getfFollows();
         int common = 0;
 
-        for (int i = 0; i < myFollows.length; i ++) {
-           for (int j = 0; j < otherFollows.length; j ++) {
-               if (myFollows[i] == otherFollows[j] && myFollows[i] != null) common ++; 
+        for (int i = 0; i < this.getfCount(); i ++) {
+           for (int j = 0; j < other.getfCount(); j ++) {
+               if (myFollows[i] == otherFollows[j]) common ++; 
             }
         }
         return common;
