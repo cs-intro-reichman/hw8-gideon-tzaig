@@ -98,12 +98,12 @@
     public int countMutual(User other) {
         //// Replace the following statement with your code
         String[] myFollows = this.getfFollows();
-        String[] hisFollows = other.getfFollows();
+        String[] otherFollows = other.getfFollows();
         int common = 0;
 
         for (int i = 0; i < myFollows.length; i ++) {
-           for (int j = 0; j < hisFollows.length; j ++) {
-               if (myFollows[i] == hisFollows[j] && myFollows[i] != null) common ++; 
+           for (int j = 0; j < otherFollows.length; j ++) {
+               if (myFollows[i] == otherFollows[j] && myFollows[i] != null) common ++; 
             }
         }
         return common;

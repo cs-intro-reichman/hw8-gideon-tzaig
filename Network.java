@@ -31,7 +31,7 @@ public class Network {
     public User getUser(String name) {
         //// Replace the following statement with your code
         for (int i = 0; i < userCount; i ++) {
-            if (this.users[i].getName() == name) return users[i];
+            if (this.users[i].getName().toLowerCase() == name.toLowerCase()) return users[i];
         }
         return null;
     }
@@ -60,13 +60,16 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
-        
+
         for (int i = 0; i < userCount; i ++) {
-            if (this.users[i].getName().equals(name1)) {
-                for (int j = 0; j < userCount; j ++) {
-                    if (this.users[j].getName().equals(name2)) {
-                        this.users[i].addFollowee(name2);
-                        return true;
+            if (users[i].getName().equals(name1)) {
+                if (users[i].follows(name2) || users[i].getName().equals(name2)) return false;
+                else {
+                    for (int j = 0; j < userCount; j ++) {
+                        if (users[j].getName().equals(name2)) {
+                            this.users[i].addFollowee(name2);
+                            return true;
+                        }
                     }
                 }
             }                  
