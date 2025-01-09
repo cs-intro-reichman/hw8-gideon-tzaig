@@ -74,6 +74,18 @@ public class UserTest {
         System.out.println("Alex is a friend of Orly: " + alex.isFriendOf(orly));
         System.out.println("Orly is a friend of Alex: " + orly.isFriendOf(alex));
         
+        // Tests the countMutual method
+        User G = new User("G");
+        User John = new User("john");
+        for (int i = 1; i <= 100; i++) {
+            G.addFollowee("User" + i);
+            John.addFollowee("User" + i);
+        }
+
+        System.out.println("\n...Counting how many users are followed by both G and John...");
+        System.out.println("The number of users that both John and G follow: " + John.countMutual(G));
+        System.out.println("The number of users that both G and John follow: " + G.countMutual(John));
+        
         System.out.println("\nAll User class tests completed.");
     }
 }

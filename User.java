@@ -101,7 +101,7 @@
 
         for (int i = 0; i < this.getfCount(); i ++) {
            for (int j = 0; j < other.getfCount(); j ++) {
-               if (myFollows[i] == otherFollows[j]) common ++; 
+               if (myFollows[i].equals(otherFollows[j])) common ++; 
             }
         }
         return common;
