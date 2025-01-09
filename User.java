@@ -81,7 +81,7 @@
                     if (j+1 == localFnum) {
                         this.follows[j] = null;
                         fCount = j;
-                        break;
+                        return true;
                     }
                     this.follows[j] = this.follows[j + 1];
                 }
